@@ -69,7 +69,7 @@ public class FrontControllerServletV5 extends HttpServlet {
         }
 
         // 2. 핸들러를 처리할 수 있는 핸들러 어댑터를 조회한다.
-        MyHandlerAdapter adapter = getHanlderAdapter(handler);
+        MyHandlerAdapter adapter = getHandlerAdapter(handler);
 
         // 3. handle() & 4 & 5 과정을 통해 modelView를 반환
         // 그 이후의 과정은 V3, V4와 동일함
@@ -83,12 +83,12 @@ public class FrontControllerServletV5 extends HttpServlet {
         view.render(mv.getModel(), request, response);
     }
 
-    private MyHandlerAdapter getHanlderAdapter(Object handler) {
+    private MyHandlerAdapter getHandlerAdapter(Object handler) {
 
 
-        for (MyHandlerAdapter adpater : handlerAdapters) {
-            if(adpater.supports(handler)) {
-                return adpater;
+        for (MyHandlerAdapter adapter : handlerAdapters) {
+            if(adapter.supports(handler)) {
+                return adapter;
             }
         }
 
